@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Syne', sans-serif;
+    --font-script: 'Alex Brush', cursive;
+    --font-mono: 'Space Mono', monospace;
+    --font-jp: 'Noto Sans JP', sans-serif;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    body.custom-cursor-active,
+    body.custom-cursor-active a,
+    body.custom-cursor-active button,
+    body.custom-cursor-active input,
+    body.custom-cursor-active select,
+    body.custom-cursor-active [role="button"] {
+      cursor: none !important;
+    }
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-space {
+  font-family: var(--font-mono);
+}
+
+.font-jp {
+  font-family: var(--font-jp);
+}
+
+@keyframes lineFlowVertical {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(260%); }
+}
+
+@keyframes lineScanHorizontal {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+.anim-v-flow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: #e52421;
+  animation: lineFlowVertical 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.anim-h-flow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background: #e52421;
+  animation: lineScanHorizontal 2.2s ease-in-out infinite;
+}
+
+.scanlines-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 4px 100%;
+  pointer-events: none;
+}
+
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.anim-radar {
+  animation: radarSweep 10s linear infinite;
+}
+
+@keyframes expandCircle {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-fade-up {
+  animation: fadeInSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes waveOscillate {
+  0%, 100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
